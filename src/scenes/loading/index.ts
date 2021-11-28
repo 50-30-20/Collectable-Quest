@@ -86,28 +86,34 @@ export class LoadingScene extends Scene {
     });
 
     button.on("pointerdown", async function (pointer: any) {
-      // let enter = await enterGamePlay()
-      // console.log(enter);
+      let enter = await enterGamePlay()
+      console.log(enter);
 
-      //if (enter === true) {
-      // alert('triggered')
-      //console.log("selected peter character");
+      if (enter === true) {
+        // let meta:any = await getAlgoRandomness()
+        // console.log('meta', meta);
 
-      let mapNum = Math.floor(Math.random() * 3);
-      console.log("map", mapNum);
+        // const len = Math.ceil(Math.log10(meta + 1));
+        // const rounded = meta % len //Math.ceil(Math.round(num / len))
+        // let stripped = rounded % Math.random() * 10 + 10
+        // let speedfunc = parseInt(meta)
 
-      if (mapNum === 0) {
-        self.scene.start("level-1-scene");
-        self.scene.start("ui-scene");
-      } else if (mapNum === 1) {
-        self.scene.start("level-ice-scene");
-        self.scene.start("ui-scene");
-      } else {
-        self.scene.start("level-forest-scene");
-        self.scene.start("ui-scene");
+        // console.log('speedfunc', speedfunc);
+        
+        let mapNum = Math.floor(Math.random() * 3);
+        console.log("map", mapNum);
+
+        if (mapNum === 0) {
+          self.scene.start("level-1-scene");
+          self.scene.start("ui-scene");
+        } else if (mapNum === 1) {
+          self.scene.start("level-ice-scene");
+          self.scene.start("ui-scene");
+        } else {
+          self.scene.start("level-forest-scene");
+          self.scene.start("ui-scene");
+        }
       }
-
-      //}
     });
   }
 
