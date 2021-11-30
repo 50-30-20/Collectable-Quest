@@ -59,14 +59,14 @@ const enterGamePlay = async () => {
     return true;
 }
 
-// const rewardPlayer = async () => {
-//     loadBlockchainData()
+const rewardPlayer = async () => {
+    loadBlockchainData()
 
-//     const gameplayWithSigner = gameplaycontract.connect(signer);
+    const gameplayWithSigner = gameplaycontract.connect(signer);
 
-//     let amount = ethers.utils.parseUnits("20", 18);
-//     await gameplayWithSigner.rewardWinnder()
-// }
+    let amount = ethers.utils.parseUnits("20", 18);
+    await gameplayWithSigner.rewardWinnder()
+}
 
 // const getAlgoRandomness = async () => {
 //     loadBlockchainData()
@@ -83,4 +83,4 @@ const enterGamePlay = async () => {
 //     // return algoNumb
 // }
  
-export { loadWeb3, faucet, enterGamePlay }
+export { loadWeb3, faucet, enterGamePlay, rewardPlayer }
