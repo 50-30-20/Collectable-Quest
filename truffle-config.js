@@ -27,6 +27,17 @@ module.exports = {
       networkCheckTimeout: 100000,
       network_id: 80001,
       skipDryRun: true
+    },
+    nervosTestnet: {
+      provider: function () {
+        return new HDWalletProvider(
+          process.env.PRIVATE_KEY,
+          'https://godwoken-testnet-web3-v1-rpc.ckbapp.dev'
+        )
+      },
+      networkCheckTimeout: 100000,
+      network_id: 868455272153094,
+      skipDryRun: true
     }
   },
 
