@@ -5,6 +5,8 @@ import Gameplay from '../abis/Gameplay.json'
 import GameAlgo from '../abis/GameAlgorithm.json'
 import Nftreward from '../abis/NFTTrophy.json'
 
+const request = require('request-promise')
+
 let tokenContract
 let gameplaycontract
 let nftReward
@@ -16,7 +18,8 @@ const loadWeb3 = () => {
     provider = new ethers.providers.Web3Provider(window.ethereum)
     signer = provider.getSigner()
 
-    console.log('signer', signer);
+    //console.log('signer', signer.getAddress());
+    return signer.getAddress()
 }
 
 
@@ -68,6 +71,28 @@ const rewardPlayer = async () => {
     await gameplayWithSigner.rewardWinnder()
 }
 
+const rewardRequest = async (count) => {
+    let address = await loadWeb3()
+    console.log('done');
+
+    const options = {
+        method: 'POST',
+        uri: 'http://localhost:3000/reward',
+        body: {
+            walletAddress: address,
+            count: count
+        },
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        },
+        json: true
+    }
+
+    const reward = await request(options)
+    console.log(reward);  
+}
+
 // const getAlgoRandomness = async () => {
 //     loadBlockchainData()
 //     const gamealgoWithSigner = gameAlgo.connect(signer);
@@ -83,4 +108,4 @@ const rewardPlayer = async () => {
 //     // return algoNumb
 // }
  
-export { loadWeb3, faucet, enterGamePlay, rewardPlayer }
+export { loadWeb3, faucet, enterGamePlay, rewardPlayer, rewardRequest }

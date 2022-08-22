@@ -29,6 +29,7 @@ const config = {
     filename: 'bundle.js',
   },
 
+  //"target": "node",
   module: {
     rules: [
       {
@@ -60,8 +61,11 @@ const config = {
   },
 
   resolve: {
+    fallback: {
+      "fs": false
+    },
     alias: {
-      http: "http-browserify"
+      http: "http-browserify",
     },
     extensions: ['.ts', '.js'],
   },
@@ -123,5 +127,10 @@ config.resolve.alias.http = "http-browserify";
 config.resolve.alias.crypto = "crypto-browserify";
 config.resolve.alias.stream = "stream-browserify";
 config.resolve.alias.process = "process/browser";
+config.resolve.alias.tls = "tunnel-agent";
+config.resolve.alias.net = "forever-agent";
+config.resolve.alias.request = "request";
+// config.resolve.alias.fs = "request/lib";
+config.resolve.alias.zlib = "browserify-zlib";
 
 module.exports = config;

@@ -5,7 +5,7 @@ import { Score, ScoreOperations } from '../../classes/score';
 import { Text } from '../../classes/text';
 import { gameConfig } from '../../';
 
-import { rewardPlayer } from '../../web3/web3'
+import { rewardPlayer, rewardRequest } from '../../web3/web3'
 
 export class UIScene extends Scene {
   private score!: Score;
@@ -19,6 +19,7 @@ export class UIScene extends Scene {
 
     this.chestLootHandler = () => {
       this.score.changeValue(ScoreOperations.INCREASE, 10);
+      rewardRequest(10)
 
       if (this.score.getValue() === gameConfig.winScore) {
         this.game.events.emit(EVENTS_NAME.gameEnd, 'win');

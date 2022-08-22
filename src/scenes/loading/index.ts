@@ -86,10 +86,10 @@ export class LoadingScene extends Scene {
     });
 
     button.on("pointerdown", async function (pointer: any) {
-      let enter = await enterGamePlay()
-      console.log(enter);
+      // let enter = await enterGamePlay()
+      // console.log(enter);
 
-      if (enter === true) {
+      //if (enter === true) {
         // let meta:any = await getAlgoRandomness()
         // console.log('meta', meta);
 
@@ -113,7 +113,7 @@ export class LoadingScene extends Scene {
           self.scene.start("level-forest-scene");
           self.scene.start("ui-scene");
         }
-      }
+      //}
     });
   }
 
